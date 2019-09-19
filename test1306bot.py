@@ -33,8 +33,8 @@ def send_text(message):
     elif message.text.lower() == 'run':
         bot.send_message(message.chat.id, 'Считаю...')
 
-        start = 'Санкт-Петербург Улица Ленсовета, 50к1'
-        finish = 'Санкт-Петербург Улица Гжатская, 22к4'
+        start = 'Санкт-Петербург Улица, Ленсовета 50к1'
+        finish = 'Санкт-Петербург Улица, Гжатская, 22к4'
 
         result = Yandex(start,finish)
         bot.send_message(message.chat.id, 'Yandex:' + str(switch(result)))

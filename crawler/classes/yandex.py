@@ -12,7 +12,7 @@ import re
 class Yandex(object):
 
     def __init__(self, start, finish):
-        self.start = start
+        self.start = start.replace(',', '')
         self.finish = finish
 
     def whoami(self):

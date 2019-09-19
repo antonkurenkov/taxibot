@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 import time
 import re
+import sys
 
 class Vezet(object):
 
@@ -20,13 +21,14 @@ class Vezet(object):
 
     def crawl(self):
 
-        try:
+        if True:
+        #try:
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument('--no-sandbox')
             chrome_options.add_argument('--window-size=1420,1080')
             chrome_options.add_argument('--headless')
             chrome_options.add_argument('--disable-gpu')
-            driver = webdriver.Chrome(chrome_options=chrome_options)
+            driver = webdriver.Chrome(options=chrome_options)
             driver.get('https://spb.rutaxi.ru/index.html')
             time.sleep(1)
 
@@ -59,9 +61,10 @@ class Vezet(object):
             driver.quit()
             #print('vt over')
             return int(price)
-        except:
-            driver.quit()
-            return 'crawl err'
+        else:
+        #except:
+            #driver.quit()
+            return "Unexpected error:", sys.exc_info()[0]
 
 def main():
     
