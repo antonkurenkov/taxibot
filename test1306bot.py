@@ -50,7 +50,7 @@ def send_text(message):
     else:
         try:
             start = message.text.split(';')[0]
-            finish = message.text.split(';')[0]
+            finish = message.text.split(';')[1]
 
             result = Yandex(start, finish)
             bot.send_message(message.chat.id, 'Yandex:' + str(switch(result)))
