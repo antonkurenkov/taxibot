@@ -65,7 +65,7 @@ class Vezet(object):
 
 def main():
     
-    vezet = Vezet(start='Революции 33к4', finish='Ленсовета 50')
+    vezet = Vezet(start='Санкт-Петербург шоссе, Революции 33к4', finish='Санкт-Петербург улица, Ленсовета 50к1')
     print(vezet.crawl())
 
 
