@@ -9,6 +9,20 @@ from crawler.classes.five_mils import Five
 
 bot = telebot.TeleBot('987669302:AAGnJdElKiBTK1Ju81pX9mtprSQ4XddT7IU')
 
+def switch(x):
+    try:
+        if x.whoami() == 'Yandex':
+            return Yandex.crawl(x)
+        # elif x.whoami() == 'Taxovichkof':
+        #     return Taxovichkof.crawl(x)
+        elif x.whoami() == 'Gett':
+            return Gett.calc(x)
+        elif x.whoami() == 'Vezet':
+            return Vezet.crawl(x)
+        elif x.whoami() == 'Five':
+            return Five.crawl(x)
+    except:
+        return 'switch error'
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
@@ -23,16 +37,16 @@ def send_text(message):
         finish = 'Звенигородская 22'
 
         result = Yandex(start,finish)
-        bot.send_message(message.chat.id, 'price:' + str(result))
+        bot.send_message(message.chat.id, 'price:' + str(switch(result)))
 
         result = Gett(start, finish)
-        bot.send_message(message.chat.id, 'price:' + str(result))
+        bot.send_message(message.chat.id, 'price:' + str(switch(result)))
 
         result = Vezet(start, finish)
-        bot.send_message(message.chat.id, 'price:' + str(result))
+        bot.send_message(message.chat.id, 'price:' + str(switch(result)))
 
         result = Five(start, finish)
-        bot.send_message(message.chat.id, 'price:' + str(result))
+        bot.send_message(message.chat.id, 'price:' + str(switch(result)))
 
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
