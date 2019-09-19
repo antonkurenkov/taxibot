@@ -5,9 +5,9 @@ bot = telebot.TeleBot('987669302:AAGnJdElKiBTK1Ju81pX9mtprSQ4XddT7IU')
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-    if message.text == 'Привет':
+    if message.text.lower() == 'привет':
         bot.send_message(message.chat.id, 'Привет, мой создатель')
-    elif message.text == 'Пока':
+    elif message.text.lower() == 'пока':
         bot.send_message(message.chat.id, 'Прощай, создатель')
 
 
