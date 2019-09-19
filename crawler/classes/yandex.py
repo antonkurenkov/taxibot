@@ -12,8 +12,8 @@ import re
 class Yandex(object):
 
     def __init__(self, start, finish):
-        self.start = start
-        self.finish = finish
+        self.start = 'Санкт-Петербург, ' + start
+        self.finish = 'Санкт-Петербург, ' + finish
 
     def whoami(self):
         return type(self).__name__
