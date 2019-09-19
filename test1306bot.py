@@ -1,5 +1,5 @@
 import telebot
-import crawler
+from crawler import engine
 
 bot = telebot.TeleBot('987669302:AAGnJdElKiBTK1Ju81pX9mtprSQ4XddT7IU')
 
@@ -12,7 +12,7 @@ def send_text(message):
         bot.send_message(message.chat.id, 'Прощай, создатель')
     elif message.text.lower() == 'run':
         bot.send_message(message.chat.id, 'Считаю...')
-        result = crawler.engine.main()
+        result = engine.main()
         bot.send_message(message.chat.id, 'time:' + str(result[0]))
         bot.send_message(message.chat.id, 'price:' + str(result[1]))
 
