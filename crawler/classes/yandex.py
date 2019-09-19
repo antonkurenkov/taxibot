@@ -13,7 +13,7 @@ class Yandex(object):
 
     def __init__(self, start, finish):
         self.start = start.replace(',', '')
-        self.finish = finish
+        self.finish = finish.replace(',', '')
 
     def whoami(self):
         return type(self).__name__
