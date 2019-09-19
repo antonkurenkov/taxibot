@@ -47,6 +47,26 @@ def send_text(message):
 
         result = Five(start, finish)
         bot.send_message(message.chat.id, '5-000-000:' + str(switch(result)))
+    else:
+        try:
+            start = message.text.split(';')[0]
+            finish = message.text.split(';')[0]
+
+            result = Yandex(start, finish)
+            bot.send_message(message.chat.id, 'Yandex:' + str(switch(result)))
+
+            result = Gett(start, finish)
+            bot.send_message(message.chat.id, 'Gett:' + str(switch(result)))
+
+            result = Vezet(start, finish)
+            bot.send_message(message.chat.id, 'Vezet:' + str(switch(result)))
+
+            result = Five(start, finish)
+            bot.send_message(message.chat.id, '5-000-000:' + str(switch(result)))
+        except:
+            bot.send_message(message.chat.id, 'Сорян..')
+
+
 
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
@@ -55,6 +75,7 @@ keyboard1.row('button1', 'button2')
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id, 'Привет, ты написал мне /start', reply_markup=keyboard1)
+
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
