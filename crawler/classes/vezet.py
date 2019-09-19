@@ -9,10 +9,10 @@ class Vezet(object):
     def __init__(self, start, finish):
 
         start = re.split(', ', start)
-        self.start = re.split(', ', start[1])
+        self.start = re.split(' ', start[1])
 
         finish = re.split(', ', finish)
-        self.finish = re.split(', ', finish[1])
+        self.finish = re.split(' ', finish[1])
 
 
     def whoami(self):
