@@ -1,11 +1,11 @@
 from datetime import datetime
 from multiprocessing import Pool
 
-from classes.yandex import Yandex
-from classes.taxovichkof import Taxovichkof
-from classes.gett import Gett
-from classes.vezet import Vezet
-from classes.five_mils import Five
+from crawler.classes.yandex import Yandex
+from crawler.classes.taxovichkof import Taxovichkof
+from crawler.classes.gett import Gett
+from crawler.classes.vezet import Vezet
+from crawler.classes.five_mils import Five
 
 def switcher(x):
 
