@@ -8,7 +8,7 @@ class Vezet(object):
 
     def __init__(self, start, finish):
 
-        start = re.split(', ', start)
+        start = re.split(' ', start)[-1] + re.split(' ', start)[-1]
         self.start = re.split(' ', start[1])
 
         finish = re.split(', ', finish)
