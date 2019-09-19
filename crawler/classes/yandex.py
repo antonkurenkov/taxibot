@@ -61,7 +61,7 @@ class Yandex(object):
 
 def main():
     
-    ya = Yandex(start='Революции 33к4', finish='Ленсовета 50к1')
+    ya = Yandex(start='Санкт-Петербург Шоссе Революции 33к4', finish='Санкт-Петербург Улица Ленсовета 50к1')
     print(ya.crawl())
 
 
