@@ -33,20 +33,20 @@ def send_text(message):
     elif message.text.lower() == 'run':
         bot.send_message(message.chat.id, 'Считаю...')
 
-        start = 'Орджоникидзе 15'
-        finish = 'Звенигородская 22'
+        start = 'Санкт-Петербург Улица Ленсовета, 50к1'
+        finish = 'Санкт-Петербург Улица Гжатская, 22к4'
 
         result = Yandex(start,finish)
-        bot.send_message(message.chat.id, 'price:' + str(switch(result)))
+        bot.send_message(message.chat.id, 'Yandex:' + str(switch(result)))
 
         result = Gett(start, finish)
-        bot.send_message(message.chat.id, 'price:' + str(switch(result)))
+        bot.send_message(message.chat.id, 'Gett:' + str(switch(result)))
 
         result = Vezet(start, finish)
-        bot.send_message(message.chat.id, 'price:' + str(switch(result)))
+        bot.send_message(message.chat.id, 'Vezet:' + str(switch(result)))
 
         result = Five(start, finish)
-        bot.send_message(message.chat.id, 'price:' + str(switch(result)))
+        bot.send_message(message.chat.id, '5-000-000:' + str(switch(result)))
 
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
