@@ -1,5 +1,11 @@
 import telebot
-from crawler import engine
+from crawler.classes.yandex import Yandex
+from crawler.classes.gett import Gett
+from crawler.classes.vezet import Vezet
+from crawler.classes.five_mils import Five
+
+
+
 
 bot = telebot.TeleBot('987669302:AAGnJdElKiBTK1Ju81pX9mtprSQ4XddT7IU')
 
@@ -12,10 +18,21 @@ def send_text(message):
         bot.send_message(message.chat.id, 'Прощай, создатель')
     elif message.text.lower() == 'run':
         bot.send_message(message.chat.id, 'Считаю...')
-        result = engine.main()
-        bot.send_message(message.chat.id, 'time:' + str(result[0]))
-        bot.send_message(message.chat.id, 'price:' + str(result[1]))
 
+        start = 'Орджоникидзе 15'
+        finish = 'Звенигородская 22'
+
+        result = Yandex(start,finish)
+        bot.send_message(message.chat.id, 'price:' + str(result))
+
+        result = Gett(start, finish)
+        bot.send_message(message.chat.id, 'price:' + str(result))
+
+        result = Vezet(start, finish)
+        bot.send_message(message.chat.id, 'price:' + str(result))
+
+        result = Five(start, finish)
+        bot.send_message(message.chat.id, 'price:' + str(result))
 
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
