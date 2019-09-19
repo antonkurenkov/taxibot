@@ -8,8 +8,12 @@ class Vezet(object):
 
     def __init__(self, start, finish):
 
-        self.start = re.split(', ', start)
-        self.finish = re.split(', ', finish)
+        start = re.split(', ', start)
+        self.start = re.split(', ', start[1])
+
+        finish = re.split(', ', finish)
+        self.finish = re.split(', ', finish[1])
+
 
     def whoami(self):
         return type(self).__name__
