@@ -58,11 +58,11 @@ def send_text(message):
             result = Gett(start, finish)
             bot.send_message(message.chat.id, 'Gett:' + str(switch(result)))
 
-            result = Vezet(start, finish)
-            bot.send_message(message.chat.id, 'Vezet:' + str(switch(result)))
-
             result = Five(start, finish)
             bot.send_message(message.chat.id, '5-000-000:' + str(switch(result)))
+
+            result = Vezet(start, finish)
+            bot.send_message(message.chat.id, 'Vezet:' + str(switch(result)))
         except:
             bot.send_message(message.chat.id, 'Сорян..')
 
