@@ -32,12 +32,12 @@ def main():
     timer = datetime.now()
 
     park = [Yandex(start, finish),
-            Taxovichkof(start, finish),
+            #Taxovichkof(start, finish),
             Gett(start, finish),
             Vezet(start, finish),
             Five(start, finish), ]
 
-    pool = Pool(processes=5)
+    pool = Pool(processes=len(park))
     price = pool.map(switcher, park)
 
     end = datetime.now()
