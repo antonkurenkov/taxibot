@@ -14,11 +14,13 @@ class Taxovichkof(object):
 
     def __init__(self, start, finish):
 
-        self.start = re.split(' ', start)
+        start = re.split(', ', start)
+        self.start = re.split(' ', start[1])
         self.start[1] = self.start[1].replace('к', ' к')
         self.start[1] = re.split(' ', self.start[1])
-        
-        self.finish = re.split(' ', finish)
+
+        finish = re.split(', ', finish)
+        self.finish = re.split(' ', finish[1])
         self.finish[1] = self.finish[1].replace('к', ' к')
         self.finish[1] = re.split(' ', self.finish[1])
         
@@ -53,7 +55,7 @@ class Taxovichkof(object):
         #if True:
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument('--no-sandbox')
-            #chrome_options.add_argument('--window-size=1420,1080')
+            chrome_options.add_argument('--window-size=1420,1080')
             chrome_options.add_argument('--headless')
             chrome_options.add_argument('--disable-gpu')
             
@@ -62,13 +64,13 @@ class Taxovichkof(object):
             t = 1
             while t:
                 try:
-                    driver = webdriver.Chrome(chrome_options=chrome_options)
-                    #driver = webdriver.Chrome()
+                    #driver = webdriver.Chrome(options=chrome_options)
+                    driver = webdriver.Chrome()
                     driver.get('https://taxovichkof.ru/')
-                    #time.sleep(0.5)
+                    time.sleep(0.5)
                     elem = WebDriverWait(driver, 1).until(EC.visibility_of_element_located((By.ID, 'street-0')))
                     elem.send_keys(self.start[0])
-                    #time.sleep(0.5)
+                    time.sleep(0.5)
                     t = 0
                 except Exception as inst:
                     print(type(inst))
@@ -95,7 +97,7 @@ class Taxovichkof(object):
                         elem.send_keys(self.start[1][0])
                         elem.send_keys(' ')
                         elem.send_keys(self.start[1][1])
-                    #time.sleep(0.5)
+                    time.sleep(0.5)
                     t = 0
                 except Exception as inst:
                     print(type(inst))    # the exception instance
@@ -127,7 +129,7 @@ class Taxovichkof(object):
                 try:
                     elem = driver.find_element_by_id('street-1')
                     elem.send_keys(self.finish[0])
-                    #time.sleep(0.5)
+                    time.sleep(0.5)
                     t = 0
                 except Exception as inst:
                     print(type(inst))    # the exception instance
@@ -150,7 +152,7 @@ class Taxovichkof(object):
                         elem.send_keys(' ')
                         elem.send_keys(self.finish[1][1])
                         
-                    #time.sleep(0.5)
+                    time.sleep(0.5)
                     t = 0
                 except Exception as inst:
                     print(type(inst))    # the exception instance
@@ -178,7 +180,7 @@ class Taxovichkof(object):
             
 
             #price = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="car__price"]'))).text
-            #time.sleep(0.5)
+            time.sleep(0.5)
             price = driver.find_element_by_xpath('//div[@class="car__price"]').text
             price = re.split('\s', price)[0] 
 
@@ -196,7 +198,7 @@ class Taxovichkof(object):
         
 def main():
     
-    toff = Taxovichkof(start='Революции 33к4', finish='Ленсовета 50')
+    toff = Taxovichkof(start='Санкт-Петербург шоссе, Революции 33к4', finish='Санкт-Петербург улица, Ленсовета 50к1')
     print(Taxovichkof.crawl(toff))
 
 

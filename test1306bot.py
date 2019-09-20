@@ -3,7 +3,7 @@ from crawler.classes.yandex import Yandex
 from crawler.classes.gett import Gett
 from crawler.classes.vezet import Vezet
 from crawler.classes.five_mils import Five
-
+from crawler.classes.taxovichkof import Taxovichkof
 
 
 
@@ -13,8 +13,8 @@ def switch(x):
     try:
         if x.whoami() == 'Yandex':
             return Yandex.crawl(x)
-        # elif x.whoami() == 'Taxovichkof':
-        #     return Taxovichkof.crawl(x)
+        elif x.whoami() == 'Taxovichkof':
+            return Taxovichkof.crawl(x)
         elif x.whoami() == 'Gett':
             return Gett.calc(x)
         elif x.whoami() == 'Vezet':
@@ -46,7 +46,10 @@ def send_text(message):
         bot.send_message(message.chat.id, 'Vezet:' + str(switch(result)))
 
         result = Five(start, finish)
-        bot.send_message(message.chat.id, '5-000-000:' + str(switch(result)))
+        bot.send_message(message.chat.id, '5-millions:' + str(switch(result)))
+
+        result = Taxovichkof(start, finish)
+        bot.send_message(message.chat.id, 'Taxovichkof:' + str(switch(result)))
     else:
         try:
             start = message.text.split(';')[0]
