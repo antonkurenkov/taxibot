@@ -3,7 +3,7 @@ from telebot import types
 #from telebot import apihelper
 #apihelper.proxy = {'https':'socks5://orbtl.s5.opennetwork.cc:999', 417554679: 'ybSXViq3'}
 
-bot = telebot.TeleBot('987669302:AAGnJdElKiBTK1Ju81pX9mtprSQ4XddT7IU')
+bot = telebot.TeleBot('971158672:AAFt3SgFEtM2YEfqOixJeHoslEyleKV3iQY')
 
 
 @bot.message_handler(func=lambda message: True, commands=['start'])
