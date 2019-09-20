@@ -11,7 +11,7 @@ def send_text(message):
         bot.send_message(message.chat.id, 'Прощай, создатель')
     elif message.text.lower() == 'run':
         bot.send_message(message.chat.id, 'Считаю...')
-    else:
+    elif message.text.lower() == 'alt':
         bot.send_message(message.chat.id, 'Не понимаю..')
 
 
