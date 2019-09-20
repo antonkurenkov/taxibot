@@ -19,7 +19,7 @@ keyboard1 = telebot.types.ReplyKeyboardMarkup()
 keyboard1.row('button1', 'button2')
 
 @bot.message_handler(commands=['start'])
-def start_message(message):
+def start_message(message, keyboard1):
 
     bot.send_message(message.chat.id, 'Привет, ты написал мне /start', reply_markup=keyboard1)
 
