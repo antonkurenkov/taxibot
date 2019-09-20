@@ -18,6 +18,7 @@ def send_text(message):
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
 keyboard1.row('button1', 'button2')
 
+
 @bot.message_handler(commands=['start'])
 def start_message(message, keyboard1):
 
