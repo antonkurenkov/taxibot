@@ -52,6 +52,8 @@ def send_text(message):
         bot.send_message(message.chat.id, 'Taxovichkof:' + str(switch(result)))
     else:
         try:
+            bot.send_message(message.chat.id, 'Считаю...')
+
             start = message.text.split(';')[0]
             finish = message.text.split(';')[1]
 

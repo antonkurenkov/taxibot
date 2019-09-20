@@ -64,8 +64,8 @@ class Taxovichkof(object):
             t = 1
             while t:
                 try:
-                    #driver = webdriver.Chrome(options=chrome_options)
-                    driver = webdriver.Chrome()
+                    driver = webdriver.Chrome(options=chrome_options)
+                    #driver = webdriver.Chrome()
                     driver.get('https://taxovichkof.ru/')
                     time.sleep(0.5)
                     elem = WebDriverWait(driver, 1).until(EC.visibility_of_element_located((By.ID, 'street-0')))
