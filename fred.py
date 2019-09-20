@@ -1,10 +1,5 @@
 import telepot
 
-url = 'http://35.236.198.166:4444'
-#basic_auth = ('417554679', 'ybSXViq3')
-
-telepot.api.set_proxy(url, basic_auth=None)
-
 bot = telepot.Bot('971158672:AAFt3SgFEtM2YEfqOixJeHoslEyleKV3iQY')
 bot.getMe()
 
