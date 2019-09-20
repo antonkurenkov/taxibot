@@ -2,7 +2,7 @@ import telebot
 
 bot = telebot.TeleBot('987669302:AAGnJdElKiBTK1Ju81pX9mtprSQ4XddT7IU')
 
-bot.polling()
+
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
 keyboard1.row('button1', 'button2')
@@ -21,3 +21,5 @@ def send_text(message):
         bot.send_message(message.chat.id, 'Считаю...')
     else:
         bot.send_message(message.chat.id, 'Не понимаю..')
+
+bot.polling()
