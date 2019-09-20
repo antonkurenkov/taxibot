@@ -23,6 +23,4 @@ def start_message(message):
     bot.send_message(message.chat.id, 'Привет, ты написал мне /start')
     #bot.send_message(message.chat.id, 'Привет, ты написал мне /start', reply_markup=keyboard1)
 
-
-if __name__ == '__main__':
-    bot.polling(none_stop=True)
+bot.polling()
