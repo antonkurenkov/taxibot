@@ -2,14 +2,13 @@ import telebot
 
 bot = telebot.TeleBot('987669302:AAGnJdElKiBTK1Ju81pX9mtprSQ4XddT7IU')
 
-bot.polling(none_stop=True)
+bot.polling()
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
 keyboard1.row('button1', 'button2')
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-
     bot.send_message(message.chat.id, 'Привет, ты написал мне /start', reply_markup=keyboard1)
 
 @bot.message_handler(content_types=['text'])
