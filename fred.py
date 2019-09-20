@@ -20,7 +20,8 @@ keyboard1.row('Привет', 'Пока')
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    bot.send_message(message.chat.id, 'Привет, ты написал мне /start', reply_markup=keyboard1)
+    bot.send_message(message.chat.id, 'Привет, ты написал мне /start')
+    #bot.send_message(message.chat.id, 'Привет, ты написал мне /start', reply_markup=keyboard1)
 
 
 if __name__ == '__main__':
