@@ -80,4 +80,7 @@ def send_text(message):
 
 if __name__ == '__main__':
     #bot.polling(none_stop=True)
+    bot.remove_webhook()
+    bot.set_webhook(url=WEBHOOK_URL_BASE + WEBHOOK_URL_PATH,
+                    certificate=open(WEBHOOK_SSL_CERT, 'r'))
     cherrypy.quickstart(WebhookServer(), WEBHOOK_URL_PATH, {'/': {}})
