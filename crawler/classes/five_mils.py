@@ -9,8 +9,11 @@ import re
 class Five(object):
 
     def __init__(self, start, finish):
-        self.start = start
-        self.finish = finish
+        start = re.split(', ', start)
+        self.start = start[1]
+
+        finish = re.split(', ', finish)
+        self.finish = finish[1]
 
     def whoami(self):
         return type(self).__name__
@@ -24,6 +27,7 @@ class Five(object):
             chrome_options.add_argument('--headless')
             chrome_options.add_argument('--disable-gpu')
             driver = webdriver.Chrome(options=chrome_options)
+            #driver = webdriver.Chrome()
             driver.get('http://www.5-000-000.ru/online/')
             elem = driver.find_elements_by_xpath('//input[@type="text"]')[0]
             elem.clear()
@@ -39,7 +43,7 @@ class Five(object):
             elem.send_keys(Keys.TAB)
             elem.send_keys(Keys.RETURN)
             time.sleep(2)
-
+            #time.sleep(100)
             price = driver.find_element_by_id('rcost').text
             price = re.split(' ', price)[-2]
 
@@ -47,12 +51,14 @@ class Five(object):
             #print('5m over')
             return int(price)
         except:
+            print('cr-err')
+            time.sleep(100)
             driver.quit()
+
             return 'crawl err'
             
 def main():
-    
-    five_mils = Five(start='Революции 33к4', finish='Ленсовета 50к1')
+    five_mils = Five(start='Санкт-Петербург Улица, Ленсовета 50к1', finish='Санкт-Петербург Улица, Гжатская 22к4')
     print(five_mils.crawl())
 
 

@@ -19,8 +19,8 @@ def switch(x):
             return Gett.calc(x)
         elif x.whoami() == 'Vezet':
             return Vezet.crawl(x)
-        elif x.whoami() == 'Five':
-            return Five.crawl(x)
+        # elif x.whoami() == 'Five':
+        #     return Five.crawl(x)
     except:
         return 'switch error'
 
@@ -45,8 +45,8 @@ def send_text(message):
         result = Vezet(start, finish)
         bot.send_message(message.chat.id, 'Vezet:' + str(switch(result)))
 
-        result = Five(start, finish)
-        bot.send_message(message.chat.id, '5-millions:' + str(switch(result)))
+        # result = Five(start, finish)
+        # bot.send_message(message.chat.id, '5-millions:' + str(switch(result)))
 
         result = Taxovichkof(start, finish)
         bot.send_message(message.chat.id, 'Taxovichkof:' + str(switch(result)))
@@ -63,8 +63,8 @@ def send_text(message):
             result = Gett(start, finish)
             bot.send_message(message.chat.id, 'Gett:' + str(switch(result)))
 
-            result = Five(start, finish)
-            bot.send_message(message.chat.id, '5-000-000:' + str(switch(result)))
+            # result = Five(start, finish)
+            # bot.send_message(message.chat.id, '5-millions:' + str(switch(result)))
 
             result = Vezet(start, finish)
             bot.send_message(message.chat.id, 'Vezet:' + str(switch(result)))
@@ -72,9 +72,7 @@ def send_text(message):
             result = Taxovichkof(start, finish)
             bot.send_message(message.chat.id, 'Taxovichkof:' + str(switch(result)))
         except:
-            bot.send_message(message.chat.id, 'Сорян..')
-
-
+            bot.send_message(message.chat.id, 'Не понимаю..')
 
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
@@ -82,6 +80,7 @@ keyboard1.row('button1', 'button2')
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
+
     bot.send_message(message.chat.id, 'Привет, ты написал мне /start', reply_markup=keyboard1)
 
 

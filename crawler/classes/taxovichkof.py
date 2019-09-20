@@ -27,18 +27,19 @@ class Taxovichkof(object):
     def whoami(self):
         return type(self).__name__
 
-    def checklist(driver):
+    def checklist(driver, elem):
         
         c = 1
         while c:
             try:
                 time.sleep(1)
-                elem = WebDriverWait(driver, 1).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="address__suggestions-list"]/ul/li[1]/a | //div[@class="address__suggestions-list"]/ul/li/a')))
+                elem = WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="address__suggestions-list"]/ul/li[1]/a | //div[@class="address__suggestions-list"]/ul/li/a')))
                 time.sleep(1)
                 elem.click()
                 c = 0
             except Exception as inst:
                 print('check failed')
+                elem.send_keys(Keys.BACKSPACE)
                 
                 #print(f'check failed, time used: {str(total)[:7]}')
                 print(type(inst))    # the exception instance
@@ -68,7 +69,7 @@ class Taxovichkof(object):
                     #driver = webdriver.Chrome()
                     driver.get('https://taxovichkof.ru/')
                     time.sleep(0.5)
-                    elem = WebDriverWait(driver, 1).until(EC.visibility_of_element_located((By.ID, 'street-0')))
+                    elem = WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.ID, 'street-0')))
                     elem.send_keys(self.start[0])
                     time.sleep(0.5)
                     t = 0
@@ -85,7 +86,7 @@ class Taxovichkof(object):
                     pass
                     
             
-            Taxovichkof.checklist(driver)
+            Taxovichkof.checklist(driver, elem)
             
             t = 1
             while t:
@@ -95,6 +96,7 @@ class Taxovichkof(object):
                         elem.send_keys(self.start[1])
                     else:
                         elem.send_keys(self.start[1][0])
+                        time.sleep(0.5)
                         elem.send_keys(' ')
                         elem.send_keys(self.start[1][1])
                     time.sleep(0.5)
@@ -108,7 +110,7 @@ class Taxovichkof(object):
                     pass
             
             
-            Taxovichkof.checklist(driver)
+            Taxovichkof.checklist(driver, elem)
             
             t = 1
             while t:
@@ -139,7 +141,7 @@ class Taxovichkof(object):
                     print('none of street-1')
                     pass
 
-            Taxovichkof.checklist(driver)
+            Taxovichkof.checklist(driver, elem)
             
             t = 1
             while t:
@@ -149,6 +151,7 @@ class Taxovichkof(object):
                         elem.send_keys(self.finish[1])
                     else:
                         elem.send_keys(self.finish[1][0])
+                        time.sleep(0.5)
                         elem.send_keys(' ')
                         elem.send_keys(self.finish[1][1])
                         
@@ -162,7 +165,7 @@ class Taxovichkof(object):
                     print('none of building-1')
                     pass
             
-            Taxovichkof.checklist(driver)
+            Taxovichkof.checklist(driver, elem)
 
             t = 1
             while t:
@@ -197,8 +200,9 @@ class Taxovichkof(object):
             return 'crawl err full'
         
 def main():
-    
-    toff = Taxovichkof(start='Санкт-Петербург шоссе, Революции 33к4', finish='Санкт-Петербург улица, Ленсовета 50к1')
+    # start = 'Санкт-Петербург Улица, Ленсовета 50к1'
+    # finish = 'Санкт-Петербург Улица, Гжатская 22к4'
+    toff = Taxovichkof(start='Санкт-Петербург Улица, Ленсовета 50к1', finish='Санкт-Петербург Улица, Гжатская 22к4')
     print(Taxovichkof.crawl(toff))
 
 
