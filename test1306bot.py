@@ -66,6 +66,9 @@ def send_text(message):
 
             result = Vezet(start, finish)
             bot.send_message(message.chat.id, 'Vezet:' + str(switch(result)))
+
+            result = Taxovichkof(start, finish)
+            bot.send_message(message.chat.id, 'Taxovichkof:' + str(switch(result)))
         except:
             bot.send_message(message.chat.id, 'Сорян..')
 
