@@ -5,9 +5,9 @@ import cherrypy
 #from telebot import apihelper
 #apihelper.proxy = {'https':'socks5://orbtl.s5.opennetwork.cc:999', 417554679: 'ybSXViq3'}
 
-WEBHOOK_HOST = '52.57.232.2'
+WEBHOOK_HOST = 'ubuntu@52.57.232.2'
 WEBHOOK_PORT = 80
-WEBHOOK_LISTEN = '52.57.232.2'
+WEBHOOK_LISTEN = 'ubuntu@52.57.232.2'
 
 WEBHOOK_SSL_CERT = './webhook_cert.pem'
 WEBHOOK_SSL_PRIV = './webhook_pkey.pem'
