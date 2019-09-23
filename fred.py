@@ -1,48 +1,8 @@
 import telebot
 from telebot import types
 import time
-import cherrypy
-#from telebot import apihelper
-#apihelper.proxy = {'https':'socks5://orbtl.s5.opennetwork.cc:999', 417554679: 'ybSXViq3'}
-
-WEBHOOK_HOST = 'ubuntu@52.57.232.2'
-WEBHOOK_PORT = 80
-WEBHOOK_LISTEN = 'ubuntu@52.57.232.2'
-
-WEBHOOK_SSL_CERT = './webhook_cert.pem'
-WEBHOOK_SSL_PRIV = './webhook_pkey.pem'
-
-WEBHOOK_URL_BASE = "https://%s:%s" % (WEBHOOK_HOST, WEBHOOK_PORT)
-WEBHOOK_URL_PATH = "/%s/" % ('971158672:AAFt3SgFEtM2YEfqOixJeHoslEyleKV3iQY')
-
-cherrypy.config.update({
-    'server.socket_host': WEBHOOK_LISTEN,
-    'server.socket_port': WEBHOOK_PORT,
-    'server.ssl_module': 'builtin',
-    'server.ssl_certificate': WEBHOOK_SSL_CERT,
-    'server.ssl_private_key': WEBHOOK_SSL_PRIV
-})
 
 bot = telebot.TeleBot('971158672:AAFt3SgFEtM2YEfqOixJeHoslEyleKV3iQY')
-bot.remove_webhook()
-bot.set_webhook(url=WEBHOOK_URL_BASE + WEBHOOK_URL_PATH,
-                certificate=open(WEBHOOK_SSL_CERT, 'r'))
-
-class WebhookServer(object):
-    @cherrypy.expose
-    def index(self):
-        if 'content-length' in cherrypy.request.headers and \
-                        'content-type' in cherrypy.request.headers and \
-                        cherrypy.request.headers['content-type'] == 'application/json':
-            length = int(cherrypy.request.headers['content-length'])
-            json_string = cherrypy.request.body.read(length).decode("utf-8")
-            update = telebot.types.Update.de_json(json_string)
-            # Эта функция обеспечивает проверку входящего сообщения
-            bot.process_new_updates([update])
-            return ''
-        else:
-            raise cherrypy.HTTPError(403)
-
 
 @bot.message_handler(func=lambda message: True, commands=['start'])
 def start_message(message):
@@ -79,4 +39,4 @@ def send_text(message):
         bot.send_message(message.chat.id, 'Не понимаю...')
 
 
-cherrypy.quickstart(WebhookServer(), WEBHOOK_URL_PATH, {'/': {}})
+bot.polling(none_stop=True)
