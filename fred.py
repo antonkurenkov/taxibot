@@ -3,7 +3,7 @@ from telebot import types
 import time
 
 bot = telebot.TeleBot('971158672:AAFt3SgFEtM2YEfqOixJeHoslEyleKV3iQY')
-
+bot.delete_webhook()
 @bot.message_handler(func=lambda message: True, commands=['start'])
 def start_message(message):
     markup = types.ReplyKeyboardMarkup()
