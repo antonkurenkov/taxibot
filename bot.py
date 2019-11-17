@@ -3,6 +3,8 @@ from crawler.classes.yandex import Yandex
 from crawler.classes.gett import Gett
 from crawler.classes.vezet import Vezet
 from crawler.classes.five_mils import Five
+from crawler.classes.taxovichkof import Taxovichkof
+
 
 bot = telebot.TeleBot('<INPUT YOUR TOKEN HERE>')
 
@@ -10,8 +12,8 @@ def switch(x):
     try:
         if x.whoami() == 'Yandex':
             return Yandex.crawl(x)
-        # elif x.whoami() == 'Taxovichkof':
-        #     return Taxovichkof.crawl(x)
+        elif x.whoami() == 'Taxovichkof':
+            return Taxovichkof.crawl(x)
         elif x.whoami() == 'Gett':
             return Gett.calc(x)
         elif x.whoami() == 'Vezet':
