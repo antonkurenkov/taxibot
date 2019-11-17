@@ -4,10 +4,7 @@ from crawler.classes.gett import Gett
 from crawler.classes.vezet import Vezet
 from crawler.classes.five_mils import Five
 
-
-
-
-bot = telebot.TeleBot('987669302:AAGnJdElKiBTK1Ju81pX9mtprSQ4XddT7IU')
+bot = telebot.TeleBot('<INPUT YOUR TOKEN HERE>')
 
 def switch(x):
     try:
